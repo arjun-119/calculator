@@ -29,3 +29,8 @@ function operate(operator,num1,num2){
     if (operator === '/')
         return divide(num1,num2);
 }
+
+
+const displaydiv = document.querySelector('#display');
+const buttons = document.querySelectorAll('button');
+
