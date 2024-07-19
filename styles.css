@@ -1,4 +1,10 @@
-#main{
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#outer{
     display: flex;
 }
 
