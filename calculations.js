@@ -30,7 +30,13 @@ function operate(operator,num1,num2){
         return divide(num1,num2);
 }
 
-
+let disp_content = [];
 const displaydiv = document.querySelector('#display');
 const buttons = document.querySelectorAll('button');
+
+buttons.forEach((btn)=>{
+    btn.addEventListener('click', ()=>{
+        disp_content.push(btn.value);
+    })
+})
 
