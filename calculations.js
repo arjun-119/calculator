@@ -18,13 +18,14 @@ let operator,
   flag = 0;
 
 function operate(operator, num1, num2) {
-  if (operator === "+") return add(num1, num2);
+  if (operator === "+") 
+    {displaydiv.textContent = add(num1, num2)};
 
-  if (operator === "-") return subtract(num1, num2);
+  if (operator === "-") return displaydiv.textContent = subtract(num1, num2);
 
-  if (operator === "*") return multiply(num1, num2);
+  if (operator === "*") return displaydiv.textContent = multiply(num1, num2);
 
-  if (operator === "/") return divide(num1, num2);
+  if (operator === "/") return displaydiv.textContent = divide(num1, num2);
 }
 
 const displaydiv = document.querySelector("#display");
@@ -36,6 +37,10 @@ buttons.forEach((btn) => {
 console.log(btn.value);
     if (btn.value === "AC") {
         displaydiv.textContent = '0';
+        num1 = '';
+        num2 = '';
+        flag = 0;
+        operator = '';
         return;
     }
 
@@ -50,7 +55,14 @@ console.log(btn.value);
       operator = btn.value;
       return;
     }
-    if (btn.value === "=") operate(operator, +num1, +num2);
+    if (btn.value === "="){ 
+        operate(operator, +num1, +num2)
+        num1 = '';
+        num2 = '';
+        flag = 0;
+        operator = '';
+        
+    };
 
       if (flag === 0) {
         num1 = num1.concat(btn.value);
