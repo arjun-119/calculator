@@ -33,7 +33,11 @@ let num1 = (num2 = "");
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    if (btn.value === "AC") displaydiv.textContent = 0;
+console.log(btn.value);
+    if (btn.value === "AC") {
+        displaydiv.textContent = '0';
+        return;
+    }
 
     if (
       btn.value === "+" ||
@@ -42,14 +46,21 @@ buttons.forEach((btn) => {
       btn.value === "/"
     ) {
       flag = 1;
-      displaydiv.textContent = "";
+      displaydiv.textContent = "0";
       operator = btn.value;
+      return;
     }
     if (btn.value === "=") operate(operator, +num1, +num2);
-    else {
-      if (flag === 0) num1.concat(btn.value);
 
-      if (flag === 1) num2.concat(btn.value);
-    }
+      if (flag === 0) {
+        num1 = num1.concat(btn.value);
+        displaydiv.textContent = num1;
+      }
+
+      if (flag === 1) {
+        num2 = num2.concat(btn.value);
+        displaydiv.textContent = num2;
+      }
+    
   });
 });
