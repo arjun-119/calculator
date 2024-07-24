@@ -37,6 +37,12 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((btn)=>{
     btn.addEventListener('click', ()=>{
         disp_content.push(btn.value);
+        console.log(disp_content);
+        const show_disp = disp_content.reduce((acc,iter)=>{
+            return acc.toString() + iter.toString();
+            
+        })
+        displaydiv.textContent = show_disp;
     })
 })
 
