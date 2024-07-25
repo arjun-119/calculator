@@ -22,7 +22,6 @@ function operate(operator, num1, num2) {
   else if (operator === "-") result = subtract(num1, num2);
   else if (operator === "*") result = multiply(num1, num2);
   else if (operator === "/") result = divide(num1, num2);
-  displaydiv.textContent = result;
   operator = '';
 }
 
@@ -48,18 +47,28 @@ buttons.forEach((btn) => {
       btn.value === "*" ||
       btn.value === "/"
     ) {
+      if(flag===1){
+        operate(operator, +num1, +num2);
+        operator = btn.value;
+        displaydiv.textContent = result;
+        num1 = String(result);
+        num2 = '';
+        return;
+      }
       //if flag is already 1 then call operate()
+      else{
       flag = 1;
       displaydiv.textContent = "0";
       operator = btn.value;
       return;
+      }
     }
     else if (btn.value === "=") {
       operate(operator, +num1, +num2);
+      displaydiv.textContent = result;
       num1 = String(result);
       num2 = "";
       flag = 0;
-
       return;
     }
 
