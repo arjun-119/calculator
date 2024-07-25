@@ -56,17 +56,19 @@ buttons.forEach((btn) => {
     }
     else if (btn.value === "=") {
       operate(operator, +num1, +num2);
-      num1 = result;
+      num1 = String(result);
       num2 = "";
+      flag = 0;
+
       return;
     }
 
-    if (flag === 0) {
+    else if (flag === 0) {
       num1 = num1.concat(btn.value);
       displaydiv.textContent = num1;
     }
 
-    if (flag === 1) {
+    else if (flag === 1) {
       num2 = num2.concat(btn.value);
       displaydiv.textContent = num2;
     }
