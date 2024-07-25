@@ -13,19 +13,17 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
   return num1 / num2;
 }
-
+let result;
 let operator,
   flag = 0;
 
 function operate(operator, num1, num2) {
-  if (operator === "+") 
-    {displaydiv.textContent = add(num1, num2)};
-
-  if (operator === "-") return displaydiv.textContent = subtract(num1, num2);
-
-  if (operator === "*") return displaydiv.textContent = multiply(num1, num2);
-
-  if (operator === "/") return displaydiv.textContent = divide(num1, num2);
+  if (operator === "+") result = add(num1, num2);
+  else if (operator === "-") result = subtract(num1, num2);
+  else if (operator === "*") result = multiply(num1, num2);
+  else if (operator === "/") result = divide(num1, num2);
+  displaydiv.textContent = result;
+  operator = '';
 }
 
 const displaydiv = document.querySelector("#display");
@@ -34,45 +32,43 @@ let num1 = (num2 = "");
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
-console.log(btn.value);
+    console.log(btn.value);
     if (btn.value === "AC") {
-        displaydiv.textContent = '0';
-        num1 = '';
-        num2 = '';
-        flag = 0;
-        operator = '';
-        return;
+      displaydiv.textContent = "0";
+      num1 = "";
+      num2 = "";
+      flag = 0;
+      operator = "";
+      return;
     }
 
-    if (
+    else if (
       btn.value === "+" ||
       btn.value === "-" ||
       btn.value === "*" ||
       btn.value === "/"
     ) {
+      //if flag is already 1 then call operate()
       flag = 1;
       displaydiv.textContent = "0";
       operator = btn.value;
       return;
     }
-    if (btn.value === "="){ 
-        operate(operator, +num1, +num2)
-        num1 = '';
-        num2 = '';
-        flag = 0;
-        operator = '';
-        
-    };
+    else if (btn.value === "=") {
+      operate(operator, +num1, +num2);
+      num1 = result;
+      num2 = "";
+      return;
+    }
 
-      if (flag === 0) {
-        num1 = num1.concat(btn.value);
-        displaydiv.textContent = num1;
-      }
+    if (flag === 0) {
+      num1 = num1.concat(btn.value);
+      displaydiv.textContent = num1;
+    }
 
-      if (flag === 1) {
-        num2 = num2.concat(btn.value);
-        displaydiv.textContent = num2;
-      }
-    
+    if (flag === 1) {
+      num2 = num2.concat(btn.value);
+      displaydiv.textContent = num2;
+    }
   });
 });
