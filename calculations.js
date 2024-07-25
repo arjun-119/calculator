@@ -23,7 +23,7 @@ function operate(operator, num1, num2) {
   else if (operator === "*") result = multiply(num1, num2);
   else if (operator === "/") {
     result = divide(num1, num2);
-    console.log(result);
+    result = result.toFixed(6);
     if (result === Infinity) result = "LOL NO";
   }
   operator = "";
