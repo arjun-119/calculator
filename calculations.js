@@ -23,8 +23,7 @@ function operate(operator, num1, num2) {
   else if (operator === "*") result = multiply(num1, num2);
   else if (operator === "/") {
     result = divide(num1, num2);
-    if (result === Infinity) 
-      result = "LOL NO";
+    if (result === Infinity) result = "LOL NO";
   }
   operator = "";
 }
@@ -70,24 +69,23 @@ buttons.forEach((btn) => {
         return;
       } else {
         operate(operator, +num1, +num2);
-        if(result==="LOL NO"){
-          result = '';
+        if (result === "LOL NO") {
+          result = "";
           num1 = "";
           num2 = "";
           flag = 0;
           operator = "";
           displaydiv.textContent = "0";
           return;
-        }
-        else{
-        displaydiv.textContent = result;
-        num1 = String(result);
-        num2 = "";
-        flag = 0;
-        return;
+        } else {
+          displaydiv.textContent = result;
+          num1 = String(result);
+          num2 = "";
+          flag = 0;
+          return;
         }
       }
-    } else if (flag === 0 && result!=="LOL NO") {
+    } else if (flag === 0 && result !== "LOL NO") {
       num1 = num1.concat(btn.value);
       displaydiv.textContent = num1;
     } else if (flag === 1) {
